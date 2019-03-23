@@ -101,7 +101,6 @@
                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                           </ActivityAction.Argument>
                           <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[row(1).ToString]" TopMost="True" />
                             <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[row]" />
                             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Process.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
@@ -267,22 +266,21 @@
       <Variable x:TypeArguments="sd:DataTable" Name="TransactionData" />
       <Variable x:TypeArguments="sd:DataTable" Name="MainDataTable" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcTWFpbi54YW1sHlEDjwISAgEBhQIzhQI2AgEnhwIzhwI2AgEmfRecAR8CARlTB6QBDwIBEl4PoAEXAgECfxuaASYCARtVC1kjAgEVYBN4HgIBBYEBH4cBKgIBI48BI5YBLgIBHFdQV18CARdVuAFV0QECARZhFXclAgEGggEhhgE5AgEkkAElkAGJAgIBH5EBJZUBPQIBHWFGYVcCARBnG3QmAgEHggHeAYIBgwICASWQAZMBkAGGAgIBIJEB3gGRAf8BAgEeaB1o1wECAQ5pHWmVAQIBDGodczUCAQhosgFoxQECAQ9piwFpkgECAQ1xW3FsAgELas0BatsBAgEKb19vZwIBCQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcTWFpbi54YW1sHFEDjgISAgEBhAIzhAI2AgElhgIzhgI2AgEkfBebAR8CARdTB6MBDwIBEF4PnwEXAgECfhuZASYCARlVC1kjAgETYBN3HgIBBYABH4YBKgIBIY4BI5UBLgIBGldQV18CARVVuAFV0QECARRhFXYlAgEGgQEhhQE5AgEijwEljwGJAgIBHZABJZQBPQIBG2FGYVcCAQ5nG3MmAgEHgQHeAYEBgwICASOPAZMBjwGGAgIBHpAB3gGQAf8BAgEcaB1olQECAQxpHXI1AgEIaIsBaJIBAgENcFtwbAIBC2nNAWnbAQIBCm5fbmcCAQk=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="InvokeWorkflowFile_23" sap:VirtualizedContainerService.HintSize="314,87" />
-      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="314,59" />
       <sap2010:ViewStateData Id="LogMessage_28" sap:VirtualizedContainerService.HintSize="314,91" />
       <sap2010:ViewStateData Id="InvokeWorkflowFile_24" sap:VirtualizedContainerService.HintSize="314,87" />
-      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="336,441">
+      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="336,342">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="366,589" />
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="366,490" />
       <sap2010:ViewStateData Id="Sequence_28" sap:VirtualizedContainerService.HintSize="388,713">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
