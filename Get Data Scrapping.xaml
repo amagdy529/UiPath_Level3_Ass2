@@ -67,7 +67,6 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Get Data Scrapping" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -75,74 +74,108 @@
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
-        <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_2">
-          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'ACMESyste Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3f21998bcf7af61564be782bb7a45ad0" Selector="&lt;html title='ACME System 1 - Work Items' /&gt;">
-            <ui:BrowserScope.Body>
-              <ActivityAction x:TypeArguments="x:Object">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
-                  <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'TABLE'" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' /&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="2000" NextLinkSelector="&lt;webctrl aaname='&amp;gt;' tag='A' /&gt;">
-                    <ui:ExtractData.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="00d059d7e3cee7bf0fb931c5b081fd00" Selector="&lt;webctrl tag='TABLE' /&gt;" WaitForReady="COMPLETE" />
-                    </ui:ExtractData.Target>
-                  </ui:ExtractData>
+      <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Nav-HomePage workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Nav-HomePage.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Nav Work Items" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Nav-Work Items.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'ACMESyste Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3f21998bcf7af61564be782bb7a45ad0" Selector="&lt;html title='ACME System 1 - Work Items' /&gt;">
+                    <ui:BrowserScope.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                          <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'TABLE'" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' /&gt;" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="2000" NextLinkSelector="&lt;webctrl aaname='&amp;gt;' tag='A' /&gt;">
+                            <ui:ExtractData.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="00d059d7e3cee7bf0fb931c5b081fd00" Selector="&lt;webctrl tag='TABLE' /&gt;" WaitForReady="COMPLETE" />
+                            </ui:ExtractData.Target>
+                          </ui:ExtractData>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:BrowserScope.Body>
+                  </ui:BrowserScope>
+                  <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[DataTableArg]" />
+                  <ui:FilterDataTable DataTable="[ExtractDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[ExtractDataTable]" SelectColumnsMode="Keep">
+                    <ui:FilterDataTable.Filters>
+                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                        <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                          <ui:FilterOperationArgument.Column>
+                            <InArgument x:TypeArguments="x:String">["Type"]</InArgument>
+                          </ui:FilterOperationArgument.Column>
+                          <ui:FilterOperationArgument.Operand>
+                            <InArgument x:TypeArguments="x:String">["WI4"]</InArgument>
+                          </ui:FilterOperationArgument.Operand>
+                        </ui:FilterOperationArgument>
+                      </scg:List>
+                    </ui:FilterDataTable.Filters>
+                    <ui:FilterDataTable.SelectColumns>
+                      <scg:List x:TypeArguments="InArgument" Capacity="4">
+                        <x:Null />
+                      </scg:List>
+                    </ui:FilterDataTable.SelectColumns>
+                  </ui:FilterDataTable>
+                  <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="DataSheet.xlsx">
+                    <ui:ExcelApplicationScope.Body>
+                      <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <ui:ExcelWriteRange AddHeaders="True" DataTable="[ExtractDataTable]" DisplayName="Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ExcelApplicationScope.Body>
+                  </ui:ExcelApplicationScope>
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[DataTableArg]" TopMost="True" />
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[ExtractDataTable]" TopMost="True" />
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataTable">[DataTableArg]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataTable">[ExtractDataTable]</InArgument>
+                    </Assign.Value>
+                  </Assign>
                 </Sequence>
-              </ActivityAction>
-            </ui:BrowserScope.Body>
-          </ui:BrowserScope>
-          <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[DataTableArg]" />
-          <ui:FilterDataTable DataTable="[ExtractDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[ExtractDataTable]" SelectColumnsMode="Keep">
-            <ui:FilterDataTable.Filters>
-              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
-                  <ui:FilterOperationArgument.Column>
-                    <InArgument x:TypeArguments="x:String">["Type"]</InArgument>
-                  </ui:FilterOperationArgument.Column>
-                  <ui:FilterOperationArgument.Operand>
-                    <InArgument x:TypeArguments="x:String">["WI4"]</InArgument>
-                  </ui:FilterOperationArgument.Operand>
-                </ui:FilterOperationArgument>
-              </scg:List>
-            </ui:FilterDataTable.Filters>
-            <ui:FilterDataTable.SelectColumns>
-              <scg:List x:TypeArguments="InArgument" Capacity="4">
-                <x:Null />
-              </scg:List>
-            </ui:FilterDataTable.SelectColumns>
-          </ui:FilterDataTable>
-          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="DataSheet.xlsx">
-            <ui:ExcelApplicationScope.Body>
-              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <ui:ExcelWriteRange AddHeaders="True" DataTable="[ExtractDataTable]" DisplayName="Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
-                </Sequence>
-              </ActivityAction>
-            </ui:ExcelApplicationScope.Body>
-          </ui:ExcelApplicationScope>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[DataTableArg]" TopMost="True" />
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[ExtractDataTable]" TopMost="True" />
-          <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
-            <Assign.To>
-              <OutArgument x:TypeArguments="sd:DataTable">[DataTableArg]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="sd:DataTable">[ExtractDataTable]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
       </FlowStep>
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>d0tDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcR2V0IERhdGEgU2NyYXBwaW5nLnhhbWwjSQOPAQ8CAQFLOEtVAgECTwmKARQCAQNQC18dAgEeYAtgiwECARxhC3MgAgEVdAt/JgIBDYABC4ABwgECAQuBAQuBAcYBAgEJggELiQEUAgEEUKICUNUCAgEpVhFcHAIBH2B4YIgBAgEdZjxmRAIBG2k8aUMCARphuAFhzAECARhhKWE9AgEWdKYBdLYBAgEUehF8HAIBDoABoAGAAbABAgEMgQGgAYEBtAECAQqHATqHAUwCAQeEATuEAUkCAQVXE1skAgEgexN7zQECAQ9XuQJXvwICAShZpgFZxQECASdXbVdyAgEmVzNXOQIBJVdEV1gCASNX0QJX/gICASJXsQFX9QECASF7xgF7ygECARN7Q3tXAgERe7ABe7gBAgEQ</sads:DebugSymbol.Symbol>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <sads:DebugSymbol.Symbol>d0tDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcR2V0IERhdGEgU2NyYXBwaW5nLnhhbWwnSAOiAQ8CAQFKOEpVAgECTglSIQIBLFUNWSUCASpcEZcBHAIBA069AU7QAQIBLVWzAVXIAQIBK10TbCUCAR5tE22TAQIBHG4TgAEoAgEVgQETjAEuAgENjQETjQHKAQIBC44BE44BzgECAQmPAROWARwCAQRdqgJd3QICASljGWkkAgEfbYABbZABAgEdc0RzTAIBG3ZEdksCARpuwAFu1AECARhuMW5FAgEWgQGuAYEBvgECARSHARmJASQCAQ6NAagBjQG4AQIBDI4BqAGOAbwBAgEKlAFClAFUAgEHkQFDkQFRAgEFZBtoLAIBIIgBG4gB1QECAQ9kwQJkxwICAShmrgFmzQECASdkdWR6AgEmZDtkQQIBJWRMZGACASNk2QJkhgMCASJkuQFk/QECASGIAc4BiAHSAQIBE4gBS4gBXwIBEYgBuAGIAcABAgEQ</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_2" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ExtractData_1" sap:VirtualizedContainerService.HintSize="314,106" />
       <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,230">
         <sap:WorkflowViewStateService.ViewState>
@@ -176,8 +209,26 @@
       <sap2010:ViewStateData Id="FlowStep_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200,134.5</av:Point>
+            <av:Point x:Key="ShapeLocation">200,294.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,204.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,255.5 300,294.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,114.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,165.5 300,204.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -187,7 +238,7 @@
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,134.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,114.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
