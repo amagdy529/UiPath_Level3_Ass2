@@ -17,6 +17,7 @@
     <x:Property Name="argument1" Type="InArgument(x:String)" />
     <x:Property Name="GlobalArgTaxID" Type="InArgument(x:String)" />
     <x:Property Name="GlobalArgFilePath" Type="InOutArgument(x:String)" />
+    <x:Property Name="GlobalWIID" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -141,7 +142,7 @@
         </ui:InvokeWorkflowFile>
       </FlowStep>
     </Flowchart>
-    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sEgFvAXgBAkgDkQEOAgEBSQWPARECAQJMC1AjAgETUw9XJwIBEVoTXisCAQ1hF2YvAgEHaRttMwIBBXAfdDcCAQNMvwFM0gECARRTxgFT6AECARJaugFa0AECARBcT1xfAgEOYboBYcwBAgEMY1NjYwIBCmRaZG0CAQhpzwFp4gECAQZwzwFw8AECAQQ=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sEgFvAXgBAkkDkgEOAgEBSgWQARECAQJNC1EjAgETVA9YJwIBEVsTXysCAQ1iF2cvAgEHahtuMwIBBXEfdTcCAQNNvwFN0gECARRUxgFU6AECARJbugFb0AECARBdT11fAgEOYroBYswBAgEMZFNkYwIBCmVaZW0CAQhqzwFq4gECAQZxzwFx8AECAQQ=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -255,7 +256,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="674,636">
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
