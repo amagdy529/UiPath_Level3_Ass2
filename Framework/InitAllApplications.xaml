@@ -79,7 +79,8 @@
     <ui:LogMessage DisplayName="Log App Initialization message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Launched&quot;]" />
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Login.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InArgument x:TypeArguments="x:String" x:Key="ArgUsername" />
+        <InArgument x:TypeArguments="x:String" x:Key="ArgPassword" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log App Initialization message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Logged In&quot;]" />
@@ -88,8 +89,8 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log App Initialization message" Level="Info" Message="[&quot;navigated to work items&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_4" />
-    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcRnJhbWV3b3JrXEluaXRBbGxBcHBsaWNhdGlvbnMueGFtbA9IA10OAgEBSQVJrwECAQ5KBU4dAgEMTwVPoAECAQpQBVQdAgEIVQVVoQECAQZWBVodAgEEWwVbrwECAQJJhQFJrAECAQ9KsQFKwwECAQ1PhQFPnQECAQtQsQFQvQECAQlVhQFVngECAQdWsQFWxgECAQVbVlt9AgED</sads:DebugSymbol.Symbol>
+    <ui:LogMessage DisplayName="Log App Initialization message" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;navigated to work items&quot;]" />
+    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcRnJhbWV3b3JrXEluaXRBbGxBcHBsaWNhdGlvbnMueGFtbA9IA14OAgEBSQVJrwECAQ5KBU4dAgEMTwVPoAECAQpQBVUdAgEIVgVWoQECAQZXBVsdAgEEXAVcrwECAQJJhQFJrAECAQ9KsQFKwwECAQ1PhQFPnQECAQtQsQFQvQECAQlWhQFWngECAQdXsQFXxgECAQVchQFcrAECAQM=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
