@@ -3,6 +3,7 @@
  xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
@@ -96,6 +97,10 @@
               <FlowStep.Next>
                 <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_12">
                   <Sequence DisplayName="Data Scraping" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="s:DateTime" Name="ED" />
+                      <Variable x:TypeArguments="x:String" Name="EndDate" />
+                    </Sequence.Variables>
                     <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'ACMESyste Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="3f21998bcf7af61564be782bb7a45ad0" Selector="&lt;html title='ACME System 1 - Work Items' /&gt;">
                       <ui:BrowserScope.Body>
                         <ActivityAction x:TypeArguments="x:Object">
@@ -147,6 +152,33 @@
                         </scg:List>
                       </ui:FilterDataTable.SelectColumns>
                     </ui:FilterDataTable>
+                    <Assign>
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:DateTime">[ED]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:DateTime">[cdate("2017-02-01")]</InArgument>
+                      </Assign.Value>
+                      <sap2010:WorkflowViewState.IdRef>Assign_3</sap2010:WorkflowViewState.IdRef>
+                    </Assign>
+                    <Assign>
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[EndDate]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[ED.ToString]</InArgument>
+                      </Assign.Value>
+                      <sap2010:WorkflowViewState.IdRef>Assign_4</sap2010:WorkflowViewState.IdRef>
+                    </Assign>
+                    <Assign>
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd:DataTable">[ExtractDataTable]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[ExtractDataTable.Select("Date  &gt;#"+EndDate+"#").CopyToDataTable]</InArgument>
+                      </Assign.Value>
+                      <sap2010:WorkflowViewState.IdRef>Assign_5</sap2010:WorkflowViewState.IdRef>
+                    </Assign>
                     <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="Data\OutPutDataSheet.xlsx">
                       <ui:ExcelApplicationScope.Body>
                         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
@@ -267,7 +299,7 @@
       <x:Reference>__ReferenceID9</x:Reference>
       <x:Reference>__ReferenceID10</x:Reference>
     </Flowchart>
-    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sJFADjwIOAgEBUQWNAhECAQJUC1gjAgEnWw9fJwIBJWITowEeAgEDVMABVNMBAgEoW7YBW8sBAgEmYxVyJwIBGXMVlQEqAgEOlgEVoQEwAgEGogEVogHQAQIBBGOsAmPfAgIBJGkbbyYCARqIAUaIAU4CARiLAUqLAX0CAReAAUaAAVUCARaDAUaDAWQCARV4RnhQAgEUe0Z7TgIBE3PCAXPWAQIBEXMzc0cCAQ+WAbABlgHLAQIBDZwBG54BJgIBB6IBqgGiAb4BAgEFah1uLgIBG50BHZ0B1wECAQhqwwJqyQICASNssAFszwECASJqd2p8AgEhaj1qQwIBIGpOamICAR5q2wJqiAMCAR1quwFq/wECARydAdABnQHUAQIBDJ0BTZ0BYQIBCp0BugGdAcIBAgEJ</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sLFEDrwIOAgEBUgWtAhECAQJVC1kjAgE0XA9gJwIBMmMTwwEeAgEDVcABVdMBAgE1XLYBXMsBAgEzaBV3JwIBJngVmgEqAgEbmwEVowEeAgEXpAEVrAEeAgESrQEVtQEeAgEOtgEVwQEwAgEGwgEVwgHQAQIBBGisAmjfAgIBMW4bdCYCASeNAUaNAU4CASWQAUqQAX0CASSFAUaFAVUCASOIAUaIAWQCASJ9Rn1QAgEhgAFGgAFOAgEgeMIBeNYBAgEeeDN4RwIBHKABQqABVwIBGp0BQ50BRwIBGKkBQKkBTQIBFaYBQaYBSgIBE68BRa8BVwIBD7YBsAG2AcsBAgENvAEbvgEmAgEHwgGqAcIBvgECAQVvHXMuAgEovQEdvQHXAQIBCG/DAm/JAgIBMHGwAXHPAQIBL293b3wCAS5vPW9DAgEtb05vYgIBK2/bAm+IAwIBKm+7AW//AQIBKb0B0AG9AdQBAgEMvQFNvQFhAgEKvQG6Ab0BwgECAQk=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -295,6 +327,9 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="BrowserScope_1" sap:VirtualizedContainerService.HintSize="414,376" />
       <sap2010:ViewStateData Id="FilterDataTable_1" sap:VirtualizedContainerService.HintSize="414,59" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="414,60" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="414,60" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="414,60" />
       <sap2010:ViewStateData Id="ExcelWriteRange_1" sap:VirtualizedContainerService.HintSize="314,87" />
       <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,211">
         <sap:WorkflowViewStateService.ViewState>
@@ -305,7 +340,7 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="414,320" />
       <sap2010:ViewStateData Id="MessageBox_4" sap:VirtualizedContainerService.HintSize="414,59" />
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="436,1058">
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="436,1358">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

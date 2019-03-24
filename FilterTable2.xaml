@@ -90,7 +90,7 @@
                 <OutArgument x:TypeArguments="s:DateTime">[ED]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="s:DateTime">[cdate("2018-10-01")]</InArgument>
+                <InArgument x:TypeArguments="s:DateTime">[cdate("2017-02-01")]</InArgument>
               </Assign.Value>
             </Assign>
             <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
