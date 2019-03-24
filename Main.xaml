@@ -104,8 +104,8 @@
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Config]" TopMost="True" />
-                      <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[Config(&quot;ACME_Username&quot;).toString]" sap2010:WorkflowViewState.IdRef="LogMessage_31" />
-                      <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[Config(&quot;ACME_Password&quot;).toString]" sap2010:WorkflowViewState.IdRef="LogMessage_32" />
+                      <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[Config(&quot;ACME_Username&quot;).toString]" />
+                      <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[Config(&quot;ACME_Password&quot;).toString]" />
                       <Sequence sap2010:Annotation.AnnotationText="Save job arguments with values to Config, using the argument's name as keyname. " DisplayName="Save job arguments Config" sap2010:WorkflowViewState.IdRef="Sequence_22">
                         <If Condition="[Not string.IsNullOrEmpty(OrchestratorQueueName)]" DisplayName="OrchestratorQueueName" sap2010:WorkflowViewState.IdRef="If_9">
                           <If.Then>
@@ -268,7 +268,7 @@
       <Variable x:TypeArguments="sd:DataTable" Name="TransactionData" />
       <Variable x:TypeArguments="sd:DataTable" Name="MainDataTable" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcTWFpbi54YW1sNFEDkAISAgEBhgIzhgI2AgFHiAIziAI2AgFGUwfPAQ8CAQ+oAQ/HARcCAQJVC6MBFgIBFcwBI8wBOwIBEsoBD8oBnQECARGqARPFAR4CAQRXD5ABGgIBG5gBE58BHAIBFqwBF7IBIgIBDLoBG8EBJgIBBVgRXxoCAUJgEYoBFgIBIIsBEY8BKQIBHJ0BQZ0BTAIBGZoBQpoBTwIBF60BGbEBMQIBDbsBHbsBgQICAQi8AR3AATUCAQZdP11IAgFFWkBaTQIBQ2AfYDQCASFiFYgBIAIBI40BaI0BcAIBHosBzQGLAfEBAgEdrQHWAa0B+wECAQ67AYsBuwH+AQIBCbwB1gG8AfcBAgEHYxdpLwIBPGoXasgBAgE5axdrtgECATZsF2y2AQIBM20XfSICASl+F4IBLwIBJ4MBF4cBKQIBJGdwZ3gCAUBjzwFj7wECAT9mXGZ2AgE+ZVhlaAIBPWqsAWq2AQIBOmtVa4MBAgE3bFVsgwECATRuGXweAgEqftABfvEBAgEohQFjhQGQAQIBJW4nbloCAStwHXcmAgEueh16hQICAS11SHVfAgExcklyagIBLw==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcTWFpbi54YW1sNFEDkAISAgEBhgIzhgI2AgFHiAIziAI2AgFGUwfPAQ8CAQ+oAQ/HARcCAQJVC6MBFgIBFcwBI8wBOwIBEsoBD8oBnQECARGqARPFAR4CAQRXD5ABGgIBG5gBE58BHAIBFqwBF7IBIgIBDLoBG8EBJgIBBVgRXxoCAUJgEYoBFgIBIIsBEY8BKQIBHJ0BQZ0BTAIBGZoBQpoBTwIBF60BGbEBMQIBDbsBHbsBgQICAQi8AR3AATUCAQZdP11IAgFFWkBaTQIBQ2AfYDQCASFiFYgBIAIBI40BaI0BcAIBHosBzQGLAfEBAgEdrQHWAa0B+wECAQ67AYsBuwH+AQIBCbwB1gG8AfcBAgEHYxdpLwIBPGoXasgBAgE5axdrtgECATZsF2y2AQIBM20XfSICASl+F4IBLwIBJ4MBF4cBKQIBJGdwZ3gCAUBjzwFj7wECAT9mXGZ2AgE+ZVhlaAIBPWqsAWq2AQIBOmuFAWuzAQIBN2yFAWyzAQIBNG4ZfB4CASp+0AF+8QECASiFAWOFAZABAgElbiduWgIBK3AddyYCAS56HXqFAgIBLXVIdV8CATFySXJqAgEv</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -337,7 +337,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="504,1546">
+      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="504,1677">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -394,7 +394,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_2" sap:VirtualizedContainerService.HintSize="530,1935">
+      <sap2010:ViewStateData Id="State_2" sap:VirtualizedContainerService.HintSize="530,2066">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">274.5,8.5</av:Point>
@@ -474,7 +474,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Main2_1" sap:VirtualizedContainerService.HintSize="848,906" />
+      <sap2010:ViewStateData Id="Main2_1" sap:VirtualizedContainerService.HintSize="848,866" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

@@ -73,14 +73,14 @@
     <ui:LogMessage DisplayName="Log App Initialization message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening applications...&quot;]" />
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Launch ACME.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InArgument x:TypeArguments="x:String" x:Key="ACME_URL">[in_Config("ACME_URL").toString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log App Initialization message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Launched&quot;]" />
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Login.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="ArgUsername" />
-        <InArgument x:TypeArguments="x:String" x:Key="ArgPassword" />
+        <InArgument x:TypeArguments="x:String" x:Key="ArgUsername">[in_Config("ACME_Username").toString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ArgPassword">[in_Config("ACME_Password").toString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log App Initialization message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Logged In&quot;]" />
@@ -90,7 +90,7 @@
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log App Initialization message" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;navigated to work items&quot;]" />
-    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcRnJhbWV3b3JrXEluaXRBbGxBcHBsaWNhdGlvbnMueGFtbA9IA14OAgEBSQVJrwECAQ5KBU4dAgEMTwVPoAECAQpQBVUdAgEIVgVWoQECAQZXBVsdAgEEXAVcrwECAQJJhQFJrAECAQ9KsQFKwwECAQ1PhQFPnQECAQtQsQFQvQECAQlWhQFWngECAQdXsQFXxgECAQVchQFcrAECAQM=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcRnJhbWV3b3JrXEluaXRBbGxBcHBsaWNhdGlvbnMueGFtbBJIA14OAgEBSQVJrwECARRKBU4dAgEQTwVPoAECAQ5QBVUdAgEIVgVWoQECAQZXBVsdAgEEXAVcrwECAQJJhQFJrAECARVKsQFKwwECARNMQUxhAgERT4UBT50BAgEPU0RTaQIBDFJEUmkCAQpQsQFQvQECAQlWhQFWngECAQdXsQFXxgECAQVchQFcrAECAQM=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
