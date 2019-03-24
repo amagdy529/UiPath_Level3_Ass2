@@ -73,6 +73,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Description: In this file all other process specific files will be invoked. If an application exception occurs, the current transaction can be retried. If a BRE is thrown, the transaction will be skipped. Can be a flowchart or sequence. " DisplayName="ProcessTransaction" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -115,10 +116,10 @@
                         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
                             <ui:FilterOperationArgument.Column>
-                              <InArgument x:TypeArguments="x:String">["Type"]</InArgument>
+                              <InArgument x:TypeArguments="x:String">["Status"]</InArgument>
                             </ui:FilterOperationArgument.Column>
                             <ui:FilterOperationArgument.Operand>
-                              <InArgument x:TypeArguments="x:String">["WI4"]</InArgument>
+                              <InArgument x:TypeArguments="x:String">["Open"]</InArgument>
                             </ui:FilterOperationArgument.Operand>
                           </ui:FilterOperationArgument>
                         </scg:List>
@@ -128,6 +129,26 @@
                           <x:Null />
                         </scg:List>
                       </ui:FilterDataTable.SelectColumns>
+                    </ui:FilterDataTable>
+                    <ui:FilterDataTable DataTable="[ExtractDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" OutputDataTable="[ExtractDataTable]" SelectColumnsMode="Keep">
+                      <ui:FilterDataTable.Filters>
+                        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                          <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                            <ui:FilterOperationArgument.Column>
+                              <InArgument x:TypeArguments="x:String">["Description"]</InArgument>
+                            </ui:FilterOperationArgument.Column>
+                            <ui:FilterOperationArgument.Operand>
+                              <InArgument x:TypeArguments="x:String">["Research Client Check Copy"]</InArgument>
+                            </ui:FilterOperationArgument.Operand>
+                          </ui:FilterOperationArgument>
+                        </scg:List>
+                      </ui:FilterDataTable.Filters>
+                      <ui:FilterDataTable.SelectColumns>
+                        <scg:List x:TypeArguments="InArgument" Capacity="4">
+                          <x:Null />
+                        </scg:List>
+                      </ui:FilterDataTable.SelectColumns>
+                      <sap2010:WorkflowViewState.IdRef>FilterDataTable_2</sap2010:WorkflowViewState.IdRef>
                     </ui:FilterDataTable>
                     <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="Data\DataSheet.xlsx">
                       <ui:ExcelApplicationScope.Body>
@@ -249,7 +270,7 @@
       <x:Reference>__ReferenceID9</x:Reference>
       <x:Reference>__ReferenceID10</x:Reference>
     </Flowchart>
-    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sIE4D/QEOAgEBTwX7ARECAQJSC1YjAgEjWQ9dJwIBIWATkQEeAgEDUsABUtMBAgEkWbYBWcsBAgEiYRVwJwIBFXEVgwEqAgEOhAEVjwEwAgEGkAEVkAHQAQIBBGGsAmHfAgIBIGcbbSYCARZ2RnZOAgEUeUZ5TQIBE3HCAXHWAQIBEXEzcUcCAQ+EAbABhAHFAQIBDYoBG4wBJgIBB5ABqgGQAb4BAgEFaB1sLgIBF4sBHYsB1wECAQhowwJoyQICAR9qsAFqzwECAR5od2h8AgEdaD1oQwIBHGhOaGICARpo2wJoiAMCARlouwFo/wECARiLAdABiwHUAQIBDIsBTYsBYQIBCosBugGLAcIBAgEJ</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sJU8DkgIOAgEBUAWQAhECAQJTC1cjAgEqWg9eJwIBKGETpgEeAgEDU8ABU9MBAgErWrYBWssBAgEpYhVxJwIBHHIVhAEqAgEVhQEVmAEqAgEOmQEVpAEwAgEGpQEVpQHQAQIBBGKsAmLfAgIBJ2gbbiYCAR13RndQAgEbekZ6TgIBGnLCAXLWAQIBGHIzckcCARaKAUaKAVUCARSNAUaNAWQCAROFAY4BhQGiAQIBEYUBM4UBRwIBD5kBsAGZAcUBAgENnwEboQEmAgEHpQGqAaUBvgECAQVpHW0uAgEeoAEdoAHXAQIBCGnDAmnJAgIBJmuwAWvPAQIBJWl3aXwCASRpPWlDAgEjaU5pYgIBIWnbAmmIAwIBIGm7AWn/AQIBH6AB0AGgAdQBAgEMoAFNoAFhAgEKoAG6AaABwgECAQk=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -277,6 +298,7 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="BrowserScope_1" sap:VirtualizedContainerService.HintSize="414,376" />
       <sap2010:ViewStateData Id="FilterDataTable_1" sap:VirtualizedContainerService.HintSize="414,59" />
+      <sap2010:ViewStateData Id="FilterDataTable_2" sap:VirtualizedContainerService.HintSize="414,59" />
       <sap2010:ViewStateData Id="ExcelWriteRange_1" sap:VirtualizedContainerService.HintSize="314,87" />
       <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,211">
         <sap:WorkflowViewStateService.ViewState>
@@ -287,7 +309,7 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="414,320" />
       <sap2010:ViewStateData Id="MessageBox_4" sap:VirtualizedContainerService.HintSize="414,59" />
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="436,1058">
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="436,1157">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -513,7 +535,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ProcessTransaction_1" sap:VirtualizedContainerService.HintSize="262,387" />
+      <sap2010:ViewStateData Id="ProcessTransaction_1" sap:VirtualizedContainerService.HintSize="262,396" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
