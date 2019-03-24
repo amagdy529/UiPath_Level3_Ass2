@@ -30,8 +30,8 @@
       <x:String>System.Xml</x:String>
       <x:String>System.Xml.Linq</x:String>
       <x:String>UiPath.Core</x:String>
-      <x:String>UiPath.Framework.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -45,24 +45,31 @@
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>UiPath.Core</AssemblyReference>
-      <AssemblyReference>UiPath.Framework.Activities</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Description: Here all working applications will be soft closed&#xA;&#xA;Pre Condition: N/A&#xA;Post Condtion: Applications closed" DisplayName="Normal App Closing Sequence" sap2010:WorkflowViewState.IdRef="Sequence_2">
-    <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="Closing applications..." />
-    <sads:DebugSymbol.Symbol>d3dDOlxVc2Vyc1xtaWhhaS5kdW5hcmVhbnVcR29vZ2xlIERyaXZlXFdvcmtzcGFjZVxVaVBhdGhcVGVtcGxhdGVzXFVpUGF0aF9SRUZyYW1ld29ya1xGcmFtZXdvcmtcQ2xvc2VBbGxBcHBsaWNhdGlvbnMueGFtbAM6Az0OAgEBOwU7jgECAQI7cjuLAQIBAw==</sads:DebugSymbol.Symbol>
+    <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Closing applications...&quot;]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" UnSafe="False" WorkflowFileName="Close ACME.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap2010:WorkflowViewState.IdRef>InvokeWorkflowFile_1</sap2010:WorkflowViewState.IdRef>
+    </ui:InvokeWorkflowFile>
+    <sads:DebugSymbol.Symbol>d1dDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcRnJhbWV3b3JrXENsb3NlQWxsQXBwbGljYXRpb25zLnhhbWwFOgNDDgIBATsFO5wBAgEEPAVBHQIBAjtyO5kBAgEFPHo8iwECAQM=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336.8,309.6">
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,429">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -70,7 +77,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="CloseAllApplications_1" sap:VirtualizedContainerService.HintSize="376.8,389.6" />
+      <sap2010:ViewStateData Id="CloseAllApplications_1" sap:VirtualizedContainerService.HintSize="376,509" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
