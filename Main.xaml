@@ -182,7 +182,7 @@
                   </Sequence>
                 </State.Entry>
                 <State.Transitions>
-                  <Transition DisplayName="T2" sap2010:WorkflowViewState.IdRef="Transition_12">
+                  <Transition DisplayName="T2">
                     <Transition.To>
                       <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Process stops here" DisplayName="End Process" sap2010:WorkflowViewState.IdRef="State_6" IsFinal="True">
                         <State.Entry>
@@ -217,6 +217,7 @@
                         </State.Entry>
                       </State>
                     </Transition.To>
+                    <sap2010:WorkflowViewState.IdRef>Transition_13</sap2010:WorkflowViewState.IdRef>
                   </Transition>
                 </State.Transitions>
               </State>
@@ -285,7 +286,7 @@
       <Variable x:TypeArguments="sd:DataTable" Name="TransactionData" />
       <Variable x:TypeArguments="sd:DataTable" Name="MainDataTable" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcTWFpbi54YW1sOVEDoQISAgEBlwIzlwI2AgFOmQIzmQI2AgFNUwfmAQ8CARa7ARfaAR8CAQmoAQ/eARcCAQJVC6MBFgIBHOMBI+MBOwIBGeEBD+EBnQECARi9ARvYASYCAQuqARO2AR4CAQVXD5ABGgIBIpgBE58BHAIBHb8BH8UBKgIBE80BI9QBLgIBDKsBFbUBLQIBBlgRXxoCAUlgEYoBFgIBJ4sBEY8BKQIBI50BQZ0BTAIBIJoBQpoBTwIBHsABIcQBOQIBFM4BJc4BiQICAQ/PASXTAT0CAQ2rAcUBqwHTAQIBCLABV7ABXwIBB10/XUgCAUxaQFpNAgFKYB9gNAIBKGIViAEgAgEqjQFojQFwAgEliwHNAYsB8QECASTAAd4BwAGDAgIBFc4BkwHOAYYCAgEQzwHeAc8B/wECAQ5jF2kvAgFDahdqyAECAUBrF2u2AQIBPWwXbLYBAgE6bRd9IgIBMH4XggEvAgEugwEXhwEpAgErZ3BneAIBR2PPAWPvAQIBRmZcZnYCAUVlWGVoAgFEaqwBarYBAgFBa4UBa7MBAgE+bIUBbLMBAgE7bhl8HgIBMX7QAX7xAQIBL4UBY4UBkAECASxuJ25aAgEycB13JgIBNXodeoUCAgE0dUh1XwIBOHJJcmoCATY=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcTWFpbi54YW1sOVEDogISAgEBmAIzmAI2AgFOmgIzmgI2AgFNUwfnAQ8CARa7ARfaAR8CAQmoAQ/fARcCAQJVC6MBFgIBHOQBI+QBOwIBGeIBD+IBnQECARi9ARvYASYCAQuqARO2AR4CAQVXD5ABGgIBIpgBE58BHAIBHb8BH8UBKgIBE80BI9QBLgIBDKsBFbUBLQIBBlgRXxoCAUlgEYoBFgIBJ4sBEY8BKQIBI50BQZ0BTAIBIJoBQpoBTwIBHsABIcQBOQIBFM4BJc4BiQICAQ/PASXTAT0CAQ2rAcUBqwHTAQIBCLABV7ABXwIBB10/XUgCAUxaQFpNAgFKYB9gNAIBKGIViAEgAgEqjQFojQFwAgEliwHNAYsB8QECASTAAd4BwAGDAgIBFc4BkwHOAYYCAgEQzwHeAc8B/wECAQ5jF2kvAgFDahdqyAECAUBrF2u2AQIBPWwXbLYBAgE6bRd9IgIBMH4XggEvAgEugwEXhwEpAgErZ3BneAIBR2PPAWPvAQIBRmZcZnYCAUVlWGVoAgFEaqwBarYBAgFBa4UBa7MBAgE+bIUBbLMBAgE7bhl8HgIBMX7QAX7xAQIBL4UBY4UBkAECASxuJ25aAgEycB13JgIBNXodeoUCAgE0dUh1XwIBOHJJcmoCATY=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -408,16 +409,16 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_12">
+      <sap2010:ViewStateData Id="Transition_13">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:PointCollection x:Key="ConnectorLocation">459.3,348.5 459.3,362.8 782,362.8 782,92.8 752,92.8</av:PointCollection>
-            <x:Int32 x:Key="SrcConnectionPointIndex">67</x:Int32>
-            <x:Int32 x:Key="DestConnectionPointIndex">60</x:Int32>
+            <av:PointCollection x:Key="ConnectorLocation">495,312.85 696.2,312.85 696.2,114</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">40</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">43</x:Int32>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_8" sap:VirtualizedContainerService.HintSize="362,577">
+      <sap2010:ViewStateData Id="State_8" sap:VirtualizedContainerService.HintSize="238,77">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">257,270.5</av:Point>
