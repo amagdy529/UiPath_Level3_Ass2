@@ -61,16 +61,16 @@
       <Variable x:TypeArguments="sco:Collection(sd:Process)" Name="Processes" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0">
-        <Sequence DisplayName="LogOut">
-          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'ACMESyste Page'" InformativeScreenshot="bb39c59caaa6465a5bc81006923d039b" Selector="&lt;html title='ACME System 1 - Work Items' /&gt;">
+      <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <Sequence DisplayName="LogOut" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'ACMESyste Page'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="bb39c59caaa6465a5bc81006923d039b" Selector="&lt;html title='ACME System*' /&gt;">
             <ui:BrowserScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do">
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  https://acme-test.ui...'" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  https://acme-test.ui...'" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition OffsetX="42" OffsetY="25" Position="TopLeft" />
                     </ui:Click.CursorPosition>
@@ -78,47 +78,109 @@
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="1ae0f05efde51422e58a0a9ed35464e6" Selector="&lt;webctrl aaname='Home' parentid='bs-example-navbar-collapse-1' tag='A' /&gt;" WaitForReady="COMPLETE" />
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  https://acme-test.ui...'" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  https://acme-test.ui...'" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition OffsetX="38" OffsetY="22" Position="TopLeft" />
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="59e6762052a0e3e46f493ca48857cbfe" Selector="&lt;webctrl aaname='Log Out' parentid='bs-example-navbar-collapse-1' tag='A' /&gt;" WaitForReady="COMPLETE" />
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="59e6762052a0e3e46f493ca48857cbfe" Selector="&lt;html title='ACME System*' /&gt;&lt;webctrl aaname='Log Out' parentid='bs-example-navbar-collapse-1' tag='A' /&gt;" WaitForReady="COMPLETE" />
                     </ui:Click.Target>
                   </ui:Click>
                 </Sequence>
               </ActivityAction>
             </ui:BrowserScope.Body>
           </ui:BrowserScope>
-          <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
         </Sequence>
-        <sap2010:WorkflowViewState.IdRef>FlowStep_2</sap2010:WorkflowViewState.IdRef>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <ui:GetProcesses ContinueOnError="{x:Null}" DisplayName="Get Processes" sap2010:WorkflowViewState.IdRef="GetProcesses_1" Processes="[Processes]" />
+          </FlowStep>
+        </FlowStep.Next>
       </FlowStep>
     </Flowchart.StartNode>
     <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_1">
-      <ui:KillProcess Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="iexplore.exe" />
-    </FlowStep>
-    <FlowStep>
-      <ui:GetProcesses ContinueOnError="{x:Null}" DisplayName="Get Processes" Processes="[Processes]" sap2010:WorkflowViewState.IdRef="GetProcesses_1" />
-      <sap2010:WorkflowViewState.IdRef>FlowStep_3</sap2010:WorkflowViewState.IdRef>
+      <ui:KillProcess ContinueOnError="True" DisplayName="Kill Process" sap2010:WorkflowViewState.IdRef="KillProcess_1" Process="[iexplore.exe]" ProcessName="iexplore.exe" />
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <sads:DebugSymbol.Symbol>d0NDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcQ2xvc2UgQUNNRS54YW1sDTsDaw8CAQFBCV4UAgECQgtcHQIBA0LxAUKkAgIBDUgRWRwCAQRJE1AeAgEJURNYHgIBBU6mAU73AQIBDEs/S0MCAQtLMks2AgEKVqYBVvoBAgEIUz9TQwIBB1MyUzYCAQY=</sads:DebugSymbol.Symbol>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_5">
+      <Sequence DisplayName="Web" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window ' Shell_tra'" InformativeScreenshot="5e82733153729314ab2e9a379ae9e050" Selector="&lt;wnd app='explorer.exe' cls='Shell_TrayWnd' /&gt;">
+          <ui:WindowScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do">
+                <ui:WaitImageAppear FoundElement="{x:Null}" DisplayName="Find Image 'menu button'">
+                  <ui:WaitImageAppear.Image>
+                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="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" />
+                  </ui:WaitImageAppear.Image>
+                  <ui:WaitImageAppear.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                  </ui:WaitImageAppear.Target>
+                </ui:WaitImageAppear>
+                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button'" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition OffsetX="22" OffsetY="20" Position="TopLeft" />
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="e495fc6f3b3cf5d64972eaaacba7093c" Selector="&lt;wnd cls='MSTaskSwWClass' title='Running applications' /&gt;&lt;wnd cls='MSTaskListWClass' title='Running applications' /&gt;&lt;ctrl name='Running applications' role='tool bar' /&gt;&lt;ctrl automationid='Chrome' idx='2' name='Google Chrome - 1 running window' role='push button' /&gt;" WaitForReady="INTERACTIVE" />
+                  </ui:Click.Target>
+                </ui:Click>
+                <ui:SetClippingRegion Element="{x:Null}" Region="{x:Null}" Direction="RECTANGLE" DisplayName="Reset clipping region">
+                  <ui:SetClippingRegion.Size>
+                    <ui:Region Rectangle="0, 0, 0, 0" />
+                  </ui:SetClippingRegion.Size>
+                </ui:SetClippingRegion>
+              </Sequence>
+            </ActivityAction>
+          </ui:WindowScope.Body>
+        </ui:WindowScope>
+      </Sequence>
+    </FlowStep>
+    <sads:DebugSymbol.Symbol>d0NDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcQ2xvc2UgQUNNRS54YW1sDzsDjwEPAgEBQQldFAIBBWANYKABAgECQgtcHQIBBmCQAWCdAQIBA0KiAkLHAgIBEEgRWRwCAQdJE1AeAgEMURNYHgIBCE6mAU73AQIBD0s/S0MCAQ5LMks2AgENVqYBVp0CAgELUz9TQwIBClMyUzYCAQk=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,51">
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,376">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BrowserScope_1" sap:VirtualizedContainerService.HintSize="414,522" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="436,646">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetProcesses_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">130,299</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="FlowStep_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">380,229</av:Point>
+            <av:Point x:Key="ShapeLocation">200,204.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,255.5 300,285.5 230,285.5 230,299</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -137,18 +199,18 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="GetProcesses_1" sap:VirtualizedContainerService.HintSize="200,22">
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_3">
+      <sap2010:ViewStateData Id="FlowStep_5">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">20,69</av:Point>
-            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:Point x:Key="ShapeLocation">370,294.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -158,7 +220,7 @@
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,254.5 380,254.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,204.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
