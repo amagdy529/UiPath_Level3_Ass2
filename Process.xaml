@@ -47,6 +47,7 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -135,7 +136,7 @@
                               <InArgument x:TypeArguments="x:String">["Date"]</InArgument>
                             </ui:FilterOperationArgument.Column>
                             <ui:FilterOperationArgument.Operand>
-                              <InArgument x:TypeArguments="x:Double">[2/01/2018]</InArgument>
+                              <InArgument x:TypeArguments="sd:DataRow[]">[ExtractDataTable.Select("Date&gt;' 2018-01-01' ")]</InArgument>
                             </ui:FilterOperationArgument.Operand>
                           </ui:FilterOperationArgument>
                         </scg:List>
@@ -146,7 +147,7 @@
                         </scg:List>
                       </ui:FilterDataTable.SelectColumns>
                     </ui:FilterDataTable>
-                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="Data\DataSheet.xlsx">
+                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="Data\OutPutDataSheet.xlsx">
                       <ui:ExcelApplicationScope.Body>
                         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                           <ActivityAction.Argument>
@@ -266,7 +267,7 @@
       <x:Reference>__ReferenceID9</x:Reference>
       <x:Reference>__ReferenceID10</x:Reference>
     </Flowchart>
-    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sJE8DjgIOAgEBUAWMAhECAQJTC1cjAgEnWg9eJwIBJWETogEeAgEDU8ABU9MBAgEoWrYBWssBAgEmYhVxJwIBGXIVlAEqAgEOlQEVoAEwAgEGoQEVoQHQAQIBBGKsAmLfAgIBJGgbbiYCARqHAUaHAU4CARiKAUaKAVECARd/Rn9VAgEWggFGggFkAgEVd0Z3UAIBFHpGek4CARNywgFy1gECARFyM3JHAgEPlQGwAZUBxQECAQ2bARudASYCAQehAaoBoQG+AQIBBWkdbS4CARucAR2cAdcBAgEIacMCackCAgEja7ABa88BAgEiaXdpfAIBIWk9aUMCASBpTmliAgEeadsCaYgDAgEdabsBaf8BAgEcnAHQAZwB1AECAQycAU2cAWECAQqcAboBnAHCAQIBCQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sJFADjwIOAgEBUQWNAhECAQJUC1gjAgEnWw9fJwIBJWITowEeAgEDVMABVNMBAgEoW7YBW8sBAgEmYxVyJwIBGXMVlQEqAgEOlgEVoQEwAgEGogEVogHQAQIBBGOsAmPfAgIBJGkbbyYCARqIAUaIAU4CARiLAUqLAX0CAReAAUaAAVUCARaDAUaDAWQCARV4RnhQAgEUe0Z7TgIBE3PCAXPWAQIBEXMzc0cCAQ+WAbABlgHLAQIBDZwBG54BJgIBB6IBqgGiAb4BAgEFah1uLgIBG50BHZ0B1wECAQhqwwJqyQICASNssAFszwECASJqd2p8AgEhaj1qQwIBIGpOamICAR5q2wJqiAMCAR1quwFq/wECARydAdABnQHUAQIBDJ0BTZ0BYQIBCp0BugGdAcIBAgEJ</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
