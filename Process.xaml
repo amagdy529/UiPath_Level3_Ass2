@@ -121,7 +121,7 @@
                   <FlowStep.Next>
                     <FlowStep x:Name="__ReferenceID11" sap2010:WorkflowViewState.IdRef="FlowStep_16">
                       <Sequence DisplayName="Filtering" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                        <ui:FilterDataTable DataTable="[ExtractDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" OutputDataTable="[ExtractDataTable]" SelectColumnsMode="Keep">
+                        <ui:FilterDataTable DataTable="[ExtractDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[ExtractDataTable]" SelectColumnsMode="Keep">
                           <ui:FilterDataTable.Filters>
                             <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                               <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -147,52 +147,46 @@
                               <x:Null />
                             </scg:List>
                           </ui:FilterDataTable.SelectColumns>
-                          <sap2010:WorkflowViewState.IdRef>FilterDataTable_3</sap2010:WorkflowViewState.IdRef>
                         </ui:FilterDataTable>
-                        <Assign>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
                           <Assign.To>
                             <OutArgument x:TypeArguments="s:DateTime">[ED]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="s:DateTime">[cdate("2018-02-01")]</InArgument>
                           </Assign.Value>
-                          <sap2010:WorkflowViewState.IdRef>Assign_6</sap2010:WorkflowViewState.IdRef>
                         </Assign>
-                        <Assign>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[EndDate]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="x:String">[ED.ToString]</InArgument>
                           </Assign.Value>
-                          <sap2010:WorkflowViewState.IdRef>Assign_7</sap2010:WorkflowViewState.IdRef>
                         </Assign>
-                        <Assign>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
                           <Assign.To>
                             <OutArgument x:TypeArguments="sd:DataTable">[ExtractDataTable]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[ExtractDataTable.Select("Date  &gt;#"+EndDate+"#").CopyToDataTable]</InArgument>
                           </Assign.Value>
-                          <sap2010:WorkflowViewState.IdRef>Assign_8</sap2010:WorkflowViewState.IdRef>
                         </Assign>
                       </Sequence>
                       <FlowStep.Next>
                         <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_15">
                           <Sequence DisplayName="Append To Excel" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" WorkbookPath="Data\OutPutDataSheet.xlsx">
+                            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="Data\OutPutDataSheet.xlsx">
                               <ui:ExcelApplicationScope.Body>
                                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                                   </ActivityAction.Argument>
-                                  <Sequence DisplayName="Do">
-                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[ExtractDataTable]" DisplayName="Write Range" SheetName="Sheet1" StartingCell="A1" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" />
-                                    <sap2010:WorkflowViewState.IdRef>Sequence_7</sap2010:WorkflowViewState.IdRef>
+                                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[ExtractDataTable]" DisplayName="Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Sheet1" StartingCell="A1" />
                                   </Sequence>
                                 </ActivityAction>
                               </ui:ExcelApplicationScope.Body>
-                              <sap2010:WorkflowViewState.IdRef>ExcelApplicationScope_2</sap2010:WorkflowViewState.IdRef>
                             </ui:ExcelApplicationScope>
                           </Sequence>
                         </FlowStep>
@@ -307,7 +301,7 @@
       <x:Reference>__ReferenceID11</x:Reference>
       <x:Reference>__ReferenceID12</x:Reference>
     </Flowchart>
-    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sKlEDtwIOAgEBVgW1AhECAQJZC10jAgEyYA9kJwIBMGcTeB4CASN7F7MBIgIBDLYBG8UBJgIBA1nAAVnTAQIBM2C2AWDLAQIBMWgVdycCASR8GZcBLgIBGpgBGaABIgIBFqEBGakBIgIBEaoBGbIBIgIBDbcBHcQBOAIBBGisAmjfAgIBL24bdCYCASWJAUqJAVkCASKMAUqMAWgCASGBAUqBAVQCASCEAUqEAVICAR98kgF8pgECAR18N3xLAgEbnQFGnQFbAgEZmgFHmgFLAgEXpgFEpgFRAgEUowFFowFOAgESrAFJrAFbAgEOtwF+twGZAQIBC70BI8ABLgIBBW8dcy4CASa+ASW+Ad8BAgEGb8MCb8kCAgEucbABcc8BAgEtb3dvfAIBLG89b0MCAStvTm9iAgEpb9sCb4gDAgEob7sBb/8BAgEnvgGkAb4BqAECAQq+AVW+AWkCAQi+AY4BvgGWAQIBBw==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0BDOlxVc2Vyc1xNYWdkeUE0XERvY3VtZW50c1xVaVBhdGhcTGV2ZWwzQXNzaW5nbWVudDJcUHJvY2Vzcy54YW1sKlEDsQIOAgEBVgWvAhECAQJZC10jAgEyYA9kJwIBMGcTeB4CASN7F68BIgIBDLIBG78BJgIBA1nAAVnTAQIBM2C2AWDLAQIBMWgVdycCASR8GZYBLgIBGpcBGZ4BIgIBFp8BGaYBIgIBEacBGa4BIgIBDbMBHb4BOAIBBGisAmjfAgIBL24bdCYCASWJAUqJAVkCASKMAUqMAWgCASGBAUqBAVQCASCEAUqEAVICAR98xgF82gECAR18N3xLAgEbnAFGnAFbAgEZmQFHmQFLAgEXpAFEpAFRAgEUoQFFoQFOAgESqQFJqQFbAgEOswG4AbMB0wECAQu5ASO7AS4CAQVvHXMuAgEmugElugHfAQIBBm/DAm/JAgIBLnGwAXHPAQIBLW93b3wCASxvPW9DAgErb05vYgIBKW/bAm+IAwIBKG+7AW//AQIBJ7oB2AG6AdwBAgEKugFVugFpAgEIugHCAboBygECAQc=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -361,7 +355,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ExcelApplicationScope_2" sap:VirtualizedContainerService.HintSize="414,320" />
-      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="436,444">
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="200,52">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -371,7 +365,7 @@
       <sap2010:ViewStateData Id="FlowStep_15">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">520,414</av:Point>
+            <av:Point x:Key="ShapeLocation">530,424</av:Point>
             <av:Size x:Key="ShapeSize">200,52</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -379,9 +373,9 @@
       <sap2010:ViewStateData Id="FlowStep_16">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">520,324</av:Point>
+            <av:Point x:Key="ShapeLocation">530,344</av:Point>
             <av:Size x:Key="ShapeSize">200,52</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">620,376 620,414</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">630,396 630,424</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -390,7 +384,7 @@
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">530,254</av:Point>
             <av:Size x:Key="ShapeSize">200,52</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">630,306 620,306 620,324</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">630,306 630,344</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
